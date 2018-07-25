@@ -102,7 +102,24 @@ public class MainActivity extends ListActivity implements OnClickListener {
 
     @Override
     public void onClick(View v){
-        //
+        //这里为什么v.getParent()).getTag()？？？
+        final ShortcutInfo shortcutInfo = (ShortcutInfo)((View)v.getParent()).getTag();
+
+        switch (v.getId()){
+            case R.id.disable:
+                if (shortcutInfo.isEnabled()){
+                    mHelper.disableShortcut(shortcutInfo);
+                }else {
+                    mHelper.enableShortcut(shortcutInfo);
+                }
+                refreshList();
+                break;
+
+            case R.id.remove:
+                mHelper.removeShortcut(shortcutInfo);
+                refreshList();
+                break;
+        }
     }
 
 

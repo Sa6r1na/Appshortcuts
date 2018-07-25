@@ -157,6 +157,18 @@ public class ShortcutHelper {
         });
    }
 
+   public void disableShortcut(ShortcutInfo shortcutInfo){
+        mShortcutManager.removeDynamicShortcuts(Arrays.asList(shortcutInfo.getId()));
+   }
+
+   public void removeShortcut(ShortcutInfo shortcutInfo){
+        mShortcutManager.removeDynamicShortcuts(Arrays.asList(shortcutInfo.getId()));
+   }
+
+    public void enableShortcut(ShortcutInfo shortcutInfo){
+        mShortcutManager.enableShortcuts(Arrays.asList(shortcutInfo.getId()));
+    }
+
    private String normalizeUrl(String urlAsString){
         if(urlAsString.startsWith("http://")||urlAsString.startsWith("https://")){
             return urlAsString;
