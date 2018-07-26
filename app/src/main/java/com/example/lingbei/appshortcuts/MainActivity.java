@@ -76,12 +76,6 @@ public class MainActivity extends ListActivity implements OnClickListener {
                 }).show();
     }
 
-    public void addWebSiteShortcut(String urlAsString){
-        final String uriFinal = urlAsString;
-
-    }
-
-
     private void addUriAsync(String uri){
         new AsyncTask<Void,Void,Void>(){
             @Override
