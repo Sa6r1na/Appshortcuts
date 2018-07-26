@@ -61,6 +61,7 @@ public class MainActivity extends ListActivity implements OnClickListener {
         mHelper.reportShortcutUsed(ID_ADD_WEBSITE);
 
         final EditText editUri = new EditText(this);
+        //hint的效果是背后的浅色字体
         editUri.setHint("http://www.android.com/");
         editUri.setInputType(EditorInfo.TYPE_TEXT_VARIATION_URI);
 
@@ -141,9 +142,12 @@ public class MainActivity extends ListActivity implements OnClickListener {
     }
 
 
+    //An Adapter object acts as a bridge between an AdapterView and the underlying data for that view.
+
     private class MyAdapter extends BaseAdapter{
         private final Context mContext;
         private final LayoutInflater mInflater;
+        //Instantiates a layout XML file into its corresponding View objects
 
         private List<ShortcutInfo> mList= EMPTY_LIST;
 

@@ -46,6 +46,7 @@ public class ShortcutHelper {
     }
 
     public void reportShortcutUsed(String id) {
+        //为啥要有个ID的参数？
         //每当用户选择包含给定ID的快捷方式或用户在应用程序中完成等同于选择快捷方式的操作时，发布快捷方式的应用程序应调用此方法。
         mShortcutManager.reportShortcutUsed(id);
     }
@@ -126,6 +127,7 @@ public class ShortcutHelper {
 
 
    private ShortcutInfo.Builder setSiteInformation(ShortcutInfo.Builder b, Uri uri){
+        //shortlabel和longlaber是 shortcutinfo类的内部类的方法，所以可以直接设置shortcuinfo.builder此内部类
         b.setShortLabel(uri.getHost());
         b.setLongLabel(uri.toString());
 
@@ -158,7 +160,7 @@ public class ShortcutHelper {
    }
 
    public void disableShortcut(ShortcutInfo shortcutInfo){
-        mShortcutManager.removeDynamicShortcuts(Arrays.asList(shortcutInfo.getId()));
+        mShortcutManager.disableShortcuts(Arrays.asList(shortcutInfo.getId()));
    }
 
    public void removeShortcut(ShortcutInfo shortcutInfo){
@@ -185,11 +187,11 @@ public class ShortcutHelper {
        final Uri uri = Uri.parse(urlAsString);
        //ACTION_VIEW
        //如果您拥有一些某项 Activity 可向用户显示的信息（例如，要使用图库应用查看的照片；
-       // 或者要使用地图应用查看的地址），请使用 Intent 将此操作与 startActivity() 结合使用。
+       //或者要使用地图应用查看的地址），请使用 Intent 将此操作与 startActivity() 结合使用。
        b.setIntent(new Intent(Intent.ACTION_VIEW,uri));
 
        setSiteInformation(b,uri);
-       //persistentbundle 类型的extra，里面放上次更新时间
+       //persistentbundle 类型,里面放上次更新时间
        setExtras(b);
 
        return b.build();
